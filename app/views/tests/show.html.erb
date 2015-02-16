@@ -4,5 +4,6 @@
     Click on 'Next' to move on to the next question.
     Good luck!
   </p>
-  <p><a class="btn btn-lg btn-success" href="#" role="button">Let's get started!</a>
+  <p>
+    <%= link_to "Let's get started!", test_question_path(@test, @question), class: "btn btn-lg btn-success" %>
 </div>

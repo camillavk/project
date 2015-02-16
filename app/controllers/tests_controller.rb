@@ -14,6 +14,9 @@ class TestsController < ApplicationController
 
   def show
     @test = Test.find(params[:id])
+    @questions = Question.all
+    ids = @questions.pluck(:id)
+    @question = Question.find(ids.sample)
   end
 
 end

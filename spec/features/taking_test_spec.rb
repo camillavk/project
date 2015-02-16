@@ -6,6 +6,8 @@ include ApplicationHelper
 context "when user signed in" do
   before do
     Test.create(name: 'Test')
+    Question.create(question: "1", answer: "a")
+    Question.create(question: "2", answer: "c")
     sign_up_one
   end
 
@@ -16,6 +18,12 @@ context "when user signed in" do
   it "new test link takes them to the test" do
     click_link "Take a paper now"
     expect(page).to have_link("Let's get started!")
+  end
+
+  it "test link takes them to new question" do
+    click_link "Take a paper now"
+    click_link "Let's get started!"
+    expect(page).to have_content "Question 1"
   end
 
 end
