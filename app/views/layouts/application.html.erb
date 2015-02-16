@@ -7,8 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">OnlyChaos</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
 
-<%= yield %>
+  <div class="container">
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+
+    <footer class="footer">
+      <p>&copy; OnlyChaos 2015</p>
+    </footer>
+
+  </div>
 
 </body>
 </html>
