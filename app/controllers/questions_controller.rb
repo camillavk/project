@@ -1,15 +1,20 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.all
+    @test = Test.find(params[:test_id])
+    # @questions = @test.questions.find(params[:id])
   end
 
   def new
+    @test = Test.find(params[:test_id])
     @question = Question.new
   end
 
   def create
-    @question = Question.new(params.require(:question).permit(:question, :answer))
+    @test = Test.find(params[:test_id])
+    @question = @test.questions.create(params.require(:question).permit(:question, :answer, :image))
+    @question.save
+    redirect_to '/'
   end
 
   def show

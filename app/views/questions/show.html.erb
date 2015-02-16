@@ -1,6 +1,9 @@
 <div class="jumbotron">
   <h1>Question 1</h1>
-  <p><%= @question.question %>
+  <p>
+    <%= image_tag @question.image.url(:medium) %>
+    <%= @question.question %>
+    <%= @question.answer %>
   </p>
   <p>
     <%= link_to "Next", test_question_path(@test, @question), class: "btn btn-lg btn-success" %>
