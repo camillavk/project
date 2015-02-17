@@ -1,0 +1,13 @@
+<% @test.questions.each do |question| %>
+<h2>Question </h2>
+<p>
+  <%= image_tag question.image.url(:medium) %>
+</p>
+
+  <%= form_tag edit_test_testsession_path(@test, question) do %>
+    <%= radio_button_tag :answer, "a" %> a
+    <%= radio_button_tag :answer, "b" %> b
+    <%= submit_tag 'Submit', class: "btn btn-success" %>
+  <% end %>
+
+<% end %>

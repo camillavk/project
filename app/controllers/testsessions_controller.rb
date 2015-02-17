@@ -1,11 +1,43 @@
 class TestsessionsController < ApplicationController
 
   def new
-    redirect_to action: :create
+    @test = Test.find(params[:test_id])
+    @testsession = @test.testsessions.new
+    @testsession.user_id = current_user
+    @testsession.save
+    @questions = @test.questions
+    redirect_to action: :index
   end
 
   def create
-    
+    @test = Test.find(params[:test_id])
+    @testsession = @test.testsessions.new
+      @testsession.user_id = current_user
+      @testsession.question_id = @test.questions
+    @testsession.save
+    @questions = @test.questions
+    redirect_to action: :index
+  end
+
+  def index
+    # @testsession = Testsession.find(params[:id])
+    @test = Test.find(params[:test_id])
+    @questions = @test.questions
+  end
+
+  def show
+    # @testsession = Testsession.find(params[:id])
+    @test = Test.find(params[:test_id])
+    @questions = @test.questions
+  end
+
+  def update
+    @question = Question.find(params[:question_id])
+    @question.update(params.require(:testsession).permit(:answer, :question_id))
+
+  end
+
+  def edit
   end
 
 end

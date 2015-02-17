@@ -15,3 +15,10 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  $('.btn.btn-success').click(function(e) {
+    e.preventDefault();
+    this.value="Resubmit";
+  });
+});

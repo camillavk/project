@@ -6,12 +6,12 @@
       Looking for A-level Physics past papers that mark themselves?
       Look no further!
     </p>
-    <p><%= link_to "Sign up today", new_user_registration_path, class: "btn btn-lg btn-success" %></p>
+    <p><%= link_to "Sign up today", new_user_registration_path, class: "btn btn-lg btn-info" %></p>
   </div>
   <% else %>
   <div class="jumbotron">
     <h1>Take one of our papers now!</h1>
-      <p><%= link_to "Take a paper now", test_path(@test), class: "btn btn-lg btn-success" %></p>
+      <p><%= link_to "Take a paper now", test_path(@test), class: "btn btn-lg btn-info" %></p>
   </div>
   <% end %>
 </div>
