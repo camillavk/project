@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216132302) do
+ActiveRecord::Schema.define(version: 20150217154246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,37 @@ ActiveRecord::Schema.define(version: 20150216132302) do
 
   add_index "questions", ["test_id"], name: "index_questions_on_test_id", using: :btree
 
+  create_table "sessions", force: :cascade do |t|
+    t.string   "answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "test_id"
+    t.integer  "question_id"
+    t.integer  "user_id"
+  end
+
+  add_index "sessions", ["question_id"], name: "index_sessions_on_question_id", using: :btree
+  add_index "sessions", ["test_id"], name: "index_sessions_on_test_id", using: :btree
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
+
   create_table "tests", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "testsessions", force: :cascade do |t|
+    t.string   "answer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "test_id"
+    t.integer  "question_id"
+  end
+
+  add_index "testsessions", ["question_id"], name: "index_testsessions_on_question_id", using: :btree
+  add_index "testsessions", ["test_id"], name: "index_testsessions_on_test_id", using: :btree
+  add_index "testsessions", ["user_id"], name: "index_testsessions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -55,4 +81,10 @@ ActiveRecord::Schema.define(version: 20150216132302) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "questions", "tests"
+  add_foreign_key "sessions", "questions"
+  add_foreign_key "sessions", "tests"
+  add_foreign_key "sessions", "users"
+  add_foreign_key "testsessions", "questions"
+  add_foreign_key "testsessions", "tests"
+  add_foreign_key "testsessions", "users"
 end

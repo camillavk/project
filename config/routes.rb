@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   resources :tests do
     resources :questions
+    resources :testsessions
   end
+
+
+
   # Example resource route with options:
   #   resources :products do
   #     member do
