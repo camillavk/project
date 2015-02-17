@@ -1,10 +1,18 @@
 <div class="jumbotron">
-  <h1>Question 1</h1>
-  <p>
-    <%= image_tag @question.image.url(:medium) %>
-    <%= @question.question %>
-    <%= @question.answer %>
-  </p>
-  <p>
-    <%= link_to "Next", test_question_path(@test, @question), class: "btn btn-lg btn-success" %>
-  </div>
+
+  <% @question.each do |question| %>
+    <h2>Question </h2>
+    <p>
+      <%= image_tag question.image.url(:medium) %>
+    </p>
+    <%= form_tag edit_test_question_path do %>
+      <%= radio_button_tag :answer, "a" %> a
+      <%= radio_button_tag :answer, "b" %> b
+      <%= radio_button_tag :answer, "c" %> c
+      <%= radio_button_tag :answer, "d" %> d
+      <br/>
+      <%= submit_tag 'Save', class: "btn btn-lg btn-success" %>
+    <% end %>
+  <% end %>
+
+</div>

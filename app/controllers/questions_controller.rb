@@ -18,8 +18,20 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
     @test = Test.find(params[:test_id])
+    @questions = Question.all
+    @question = @questions.sample(5)
+    # @question = Question.find(params[:id])
+  #   @test = Test.find(params[:test_id])
+  end
+
+  def edit
+    @test.questions.find(params[:id])
+  end
+
+  def update
+    @question = Question.find(params[:id])
+    @question.update(params.require(:question).permit(:answer))
   end
 
 end
