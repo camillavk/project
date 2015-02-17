@@ -1,10 +1,17 @@
 <div class="container">
-<div class="jumbotron">
-  <h1>Welcome to OnlyChaos!</h1>
-  <p class="lead">
-    Looking for A-level Physics past papers that mark themselves?
-    Look no further!
-  </p>
-  <p><%= link_to "Sign up today", new_user_registration_path, class: "btn btn-lg btn-success" %></p>
-</div>
+  <% if !user_signed_in? %>
+  <div class="jumbotron">
+    <h1>Welcome to OnlyChaos!</h1>
+    <p class="lead">
+      Looking for A-level Physics past papers that mark themselves?
+      Look no further!
+    </p>
+    <p><%= link_to "Sign up today", new_user_registration_path, class: "btn btn-lg btn-success" %></p>
+  </div>
+  <% else %>
+  <div class="jumbotron">
+    <h1>Take one of our papers now!</h1>
+      <p><%= link_to "Take a paper now", test_path(@test), class: "btn btn-lg btn-success" %></p>
+  </div>
+  <% end %>
 </div>

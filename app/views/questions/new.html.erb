@@ -1,0 +1,14 @@
+<%= form_for [@test, @question], html: {multipart: true} do |f| %>
+
+<%= f.label :question %>
+<%= f.text_field :question %>
+
+<%= f.label :answer %>
+<%= f.text_field :answer %>
+
+<%= f.label :image %>
+<%= f.file_field :image %>
+
+<%= f.submit %>
+
+<% end %>

@@ -32,6 +32,8 @@ gem 'devise'
 
 gem 'twitter-bootstrap-rails'
 
+gem 'paperclip'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
