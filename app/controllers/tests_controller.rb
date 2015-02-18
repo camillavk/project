@@ -13,6 +13,7 @@ class TestsController < ApplicationController
   end
 
   def show
+    @tests = Test.all
     @test = Test.find(params[:id])
     @questions = Question.all
     @question = @questions.sample(5)

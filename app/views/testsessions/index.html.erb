@@ -1,13 +1,24 @@
-<% @test.questions.each do |question| %>
-<h2>Question </h2>
-<p>
-  <%= image_tag question.image.url(:medium) %>
-</p>
+<div class="jumbotron">
+  <% @test.questions.each do |question| %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Question <%= question.question %></h3>
+    </div>
+    <div class="panel-body">
+      <p>
+        <%= image_tag question.image.url(:medium) %>
+      </p>
 
-  <%= form_tag edit_test_testsession_path(@test, question) do %>
-    <%= radio_button_tag :answer, "a" %> a
-    <%= radio_button_tag :answer, "b" %> b
-    <%= submit_tag 'Submit', class: "btn btn-success" %>
+      <%= form_tag edit_test_testsession_path(@test, question) do %>
+        <%= radio_button_tag :answer, "A" %> A
+        <%= radio_button_tag :answer, "B" %> B
+        <%= radio_button_tag :answer, "C" %> C
+        <%= radio_button_tag :answer, "D" %> D
+        <%= submit_tag 'Submit', class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
-
-<% end %>
+  <br/>
+  <%= link_to "See Test Results!", test_testsession_path(@test, @test.questions), class: "btn btn-lg btn-info btn-block" %>
+</div>

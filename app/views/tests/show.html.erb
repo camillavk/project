@@ -1,9 +1,8 @@
 <div class="jumbotron">
-  <h1><%= @test.name %></h1>
+  <h1></h1>
   <p>Navigate through the test by picking what you think is the correct answer.
     Click on 'Next' to move on to the next question.
     Good luck!
   </p>
-  <p>
-    <%= link_to "Let's get started!", new_test_testsession_path(@test, @testsession), class: "btn btn-lg btn-info" %>
+  <%= link_to "Let's get started!", new_test_testsession_path(@test, @testsession), class: "btn btn-lg btn-info" %>
 </div>
