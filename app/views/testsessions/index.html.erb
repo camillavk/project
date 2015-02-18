@@ -8,7 +8,6 @@
       <p>
         <%= image_tag question.image.url(:medium) %>
       </p>
-
       <%= form_tag edit_test_testsession_path(@test, question) do %>
         <%= radio_button_tag :answer, "A" %> A
         <%= radio_button_tag :answer, "B" %> B

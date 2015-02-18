@@ -13,10 +13,11 @@ class TestsController < ApplicationController
   end
 
   def show
-    @tests = Test.all
+    # @tests = Test.all
     @test = Test.find(params[:id])
-    @questions = Question.all
-    @question = @questions.sample(5)
+    # @testsession = Testsession.new
+    # @questions = Question.all
+    # @question = @questions.sample(5)
     # ids = @questions.pluck(:id)
     # @question = Question.find(ids.sample(5))
   end
