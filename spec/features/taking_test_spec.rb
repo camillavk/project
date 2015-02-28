@@ -27,4 +27,10 @@ context "when user signed in" do
     expect(page).to have_content "Question 1"
   end
 
+  it "they should be able to submit a test" do
+    click_link "Take a paper now"
+    click_link "Test"
+    click_link "Let's get started!"
+    
+
 end

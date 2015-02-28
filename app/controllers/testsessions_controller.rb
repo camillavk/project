@@ -17,6 +17,12 @@ class TestsessionsController < ApplicationController
   def index
     @test = Test.find(params[:test_id])
     @questions = @test.questions
+    # @question = Question.find(params[:question_id])
+    # @testsession = @question.testsessions.first
+    @questions.each do |question|
+      @testsession = question.testsessions.first
+    end
+    # @testsession = Testsession.find(params[:id])
   end
 
   def show
@@ -26,18 +32,24 @@ class TestsessionsController < ApplicationController
   end
 
   def update
-    @question = Question.find(params[:question_id])
-    @question.update(params.require(:testsession).permit(:answer))
+    # @test = Test.find(params[:test_id])
+    # @testsessions = @test.questions.testsessions
+    @testsession = Testsession.find(params[:id])
+    # @question = Question.find(params[:question_id])
+    @testsession.update(params.require(:testsession).permit(:answer))
+    redirect_to action: :results
   end
 
   def edit
+    @testsession = Testsession.find(params[:id])
     @question = Question.find(params[:question_id])
-    @question.update(params.require(:testsession).permit(:answer))
+    # @testsession.update(params.require(:testsession).permit(:answer))
+    # redirect_to action: :results
   end
 
   def results
     @test = Test.find(params[:id])
-    @testsession = Testsession.find(params[:id])
+    @testsessions = @test.testsessions.where(user_id: current_user)
   end
 
 end

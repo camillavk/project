@@ -21,4 +21,10 @@ $(document).ready(function() {
     e.preventDefault();
     this.value="Resubmit";
   });
+
+  $('#submit_all').click(function(){
+    $('#submit_answer').each(function(){
+      $(this).submit();
+    });
+  });
 });

@@ -1,1 +1,16 @@
-Results!
+<div class="jumbotron">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h2 class="panel-title">Results</h2>
+    </div>
+    <div class="panel-body">
+      <% @testsessions.each do |testsession| %>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <%= testsession.question.question %>
+            <%= testsession.answer %>
+          </li>
+        </ul>
+      <% end %>
+  </div>
+</div>

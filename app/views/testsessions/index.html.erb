@@ -8,16 +8,16 @@
       <p>
         <%= image_tag question.image.url(:medium) %>
       </p>
-      <%= form_tag edit_test_testsession_path(@test, question) do %>
+      <%= form_tag test_testsession_path(@test, @testsession), :method => :put, id: 'submit_answer' do %>
         <%= radio_button_tag :answer, "A" %> A
         <%= radio_button_tag :answer, "B" %> B
         <%= radio_button_tag :answer, "C" %> C
         <%= radio_button_tag :answer, "D" %> D
-        <%= submit_tag 'Submit', class: "btn btn-success" %>
+        <%= submit_tag 'Submit', class: "btn btn-success", id: 'single_submit' %>
       <% end %>
     </div>
   </div>
   <% end %>
   <br/>
-  <%= link_to "See Test Results!", results_path(@test), class: "btn btn-lg btn-info btn-block" %>
+  <%= link_to "See Test Results!", results_path(@test), class: "btn btn-lg btn-info btn-block", id: "submit_all" %>
 </div>
