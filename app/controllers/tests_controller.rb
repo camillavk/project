@@ -9,7 +9,8 @@ class TestsController < ApplicationController
   end
 
   def create
-    @test = Test.new(params.require(:test).permit(:name))
+    @test = Test.create(params.require(:test).permit(:name))
+    redirect_to '/'
   end
 
   def show

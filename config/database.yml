@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: OnlyChaos_production
-  username: OnlyChaos
+  username: camillavk
   password: <%= ENV['ONLYCHAOS_DATABASE_PASSWORD'] %>

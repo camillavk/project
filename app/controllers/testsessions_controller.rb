@@ -35,4 +35,9 @@ class TestsessionsController < ApplicationController
     @question.update(params.require(:testsession).permit(:answer))
   end
 
+  def results
+    @test = Test.find(params[:id])
+    @testsession = Testsession.find(params[:id])
+  end
+
 end
