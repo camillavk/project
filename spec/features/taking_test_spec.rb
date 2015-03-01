@@ -31,6 +31,7 @@ context "when user signed in" do
     click_link "Take a paper now"
     click_link "Test"
     click_link "Let's get started!"
-    
+  end
+
 
 end

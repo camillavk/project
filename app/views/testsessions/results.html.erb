@@ -4,13 +4,13 @@
       <h2 class="panel-title">Results</h2>
     </div>
     <div class="panel-body">
-      <% @testsessions.each do |testsession| %>
+
         <ul class="list-group">
           <li class="list-group-item">
-            <%= testsession.question.question %>
-            <%= testsession.answer %>
+            <%= @testsessions.question.question %>
+            <%= @testsessions.answer %>
           </li>
         </ul>
-      <% end %>
+
   </div>
 </div>
